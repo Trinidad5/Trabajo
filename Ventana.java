@@ -1,78 +1,70 @@
 package p1;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.JFrame;
+public class Ventana extends JFrame {
 
+    public Ventana() {
 
-
-public class Ventana extends JFrame{
-
-	public Ventana() {
-		
- 
-		
-		
-        this.setSize(500, 500);
+        this.setSize(1000, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null); 
-        this.setMinimumSize(new Dimension(200, 200));
-        this.setMaximumSize(new Dimension(800, 800));
-        this.setTitle("Hola");
+        this.setLocationRelativeTo(null);
+        this.setLayout(null);
+        this.setTitle("Usuarios");
+
+        users();
+
         this.setVisible(true);
-        this.setBackground(Color.BLACK);
-        this.setLocation(200,200);
-        
-        JPanel contenedor = new JPanel();
-        contenedor.setOpaque(true);
-        contenedor.setBackground(Color.black);
-        contenedor.setSize(500, 500);
-        contenedor.setLocation(50,50);
-        contenedor.setLayout(null);
-        this.add(contenedor);
-        
-        JLabel tittle_login = new JLabel ();
-        tittle_login.setText("Bienvenido");
-		tittle_login.setSize(200,30);
-		tittle_login.setOpaque(true);
-		tittle_login.setLocation(150,10);
-		tittle_login.setBackground(Color.white);
-		tittle_login.setFont(new Font("Arial",Font.BOLD,22));
-		tittle_login.setHorizontalAlignment(JLabel.CENTER);
-		contenedor.add(tittle_login);
-		
-		JTextField username = new JTextField();
-		username.setSize(300,30);
-		username.setLocation(30,150);
-		username.setFont(new Font("Arial",Font.BOLD,22));
-		contenedor.add(username);
-		
-		JButton acceder = new JButton();
-		acceder.setText("Acceder");
-		acceder.setLocation(300,300);
-		acceder.setSize(100,40);
-		acceder.setFont(new Font("Arial",Font.BOLD,22));
-		contenedor.add(acceder);
-		
-		
-		
-		
-		contenedor.repaint();
-		contenedor.revalidate();
-		
-		
-		
-		
-		
+    }
 
-	}
+    public void users() {
 
+        JPanel users = new JPanel();
+        users.setBounds(0, 0, 1000, 600);
+        users.setBackground(Color.white);
+        users.setLayout(null);
+        this.add(users);
+
+        JLabel users_title = new JLabel("USUARIOS");
+        users_title.setBounds(400, 50, 200, 40);
+        users_title.setHorizontalAlignment(JLabel.CENTER);
+        users_title.setFont(new Font("Arial", Font.BOLD, 22));
+        users_title.setOpaque(true);
+        users_title.setBackground(Color.decode("#F27A61"));
+        users.add(users_title);
+
+        JButton export = new JButton("Exportar");
+        export.setBounds(30, 120, 100, 40);
+        users.add(export);
+
+        JButton add = new JButton("Añadir");
+        add.setBounds(150, 120, 100, 40);
+        users.add(add);
+        
+        String [] table_head = {"No. Control", "Nombre", "Apellidos",
+                "Semestre", "Promedio", "Acciones"};
+
+        	String[][] table_contend = {
+        			{"2024001", "Juan", "Pérez López", "2°", "8.7", "Editar / Eliminar"},
+        			{"2024002", "María", "Gómez Hernández", "4°", "9.1", "Editar / Eliminar"},
+        			{"2024003", "Carlos", "Ramírez Torres", "6°", "7.9", "Editar / Eliminar"},
+        			{"2024004", "Ana", "Martínez Cruz", "1°", "9.5", "Editar / Eliminar"},
+        	};
+
+        	JTable users_table = new JTable(table_contend, table_head);
+        	users_table.setSize(800,100);
+        	users_table.setLocation(30,180);
+        	users_table.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        	users.add(users_table);
+
+        	JScrollPane scrollpane = new JScrollPane(users_table);
+        	scrollpane.setSize(800,100);
+        	scrollpane.setLocation(30,180);
+
+        	users.repaint();
+    }
 }
