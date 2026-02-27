@@ -1,0 +1,66 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Calculadora extends JFrame {
+
+    private JTextField pantalla;
+
+    public Calculadora() {
+        setTitle("Calculadora");
+        setSize(350, 450);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
+
+      // pantalla
+        pantalla = new JTextField();
+        pantalla.setFont(new Font("Arial", Font.BOLD, 28));
+        pantalla.setHorizontalAlignment(JTextField.RIGHT);
+        pantalla.setEditable(false);
+        pantalla.setText("0");
+        add(pantalla, BorderLayout.NORTH);
+
+        // botones
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 4, 5, 5));
+        panel.setBackground(Color.DARK_GRAY);
+
+        String[] botones = {
+            "CE", "", "", "",
+            "7", "8", "9", "/",
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "0", ".", "=", "+"
+        };
+
+        for (String texto : botones) {
+            JButton boton = new JButton(texto);
+            boton.setFont(new Font("Arial", Font.BOLD, 18));
+
+            // Colores
+            if (texto.equals("CE")) {
+                boton.setBackground(Color.RED);
+                boton.setForeground(Color.WHITE);
+            } 
+            else if (texto.equals("+") || texto.equals("-") ||
+                     texto.equals("*") || texto.equals("/") ||
+                     texto.equals("=")) {
+                boton.setBackground(Color.ORANGE);
+                boton.setForeground(Color.WHITE);
+            } 
+            else {
+                boton.setBackground(Color.GRAY);
+                boton.setForeground(Color.BLACK);
+            }
+
+            panel.add(boton);
+        }
+
+        add(panel, BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Calculadora();
+    }
+}
