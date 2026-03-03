@@ -1,0 +1,117 @@
+package p1;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Ventana extends JFrame implements ActionListener {
+
+    private JLabel pantalla;
+    private String texto = "";
+    private double num1, num2, resultado;
+    private String operador;
+
+    public Ventana(){
+
+        this.setTitle("Calculadora");
+        this.setSize(400,550);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setLayout(new BorderLayout());
+
+        crearInterfaz();
+
+        this.setVisible(true);
+    }
+
+    public void crearInterfaz(){
+
+        // la pantalla
+        pantalla = new JLabel("0");
+        pantalla.setHorizontalAlignment(JLabel.RIGHT);
+        pantalla.setFont(new Font("Arial", Font.BOLD,28));
+        pantalla.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+
+        this.add(pantalla, BorderLayout.NORTH);
+
+
+        // panel centro
+        JPanel panelCentro = new JPanel();
+        panelCentro.setLayout(new GridLayout(4,4,5,5));
+
+        String[] botones = {
+                "7","8","9","+",
+                "6","5","4","-",
+                "3","2","1","=",
+                "0",".","C","/"
+        };
+
+        for(String txt : botones){
+            JButton btn = new JButton(txt);
+            btn.setFont(new Font("Arial", Font.BOLD,18));
+            btn.addActionListener(this);
+            panelCentro.add(btn);
+        }
+
+        this.add(panelCentro, BorderLayout.CENTER);
+
+
+        //panel extra
+        JPanel panelExtra = new JPanel();
+        panelExtra.setLayout(new FlowLayout());
+
+        String[] extras = {"MC","M+","*"};
+
+        for(String txt : extras){
+            JButton btn = new JButton(txt);
+            btn.addActionListener(this);
+            panelExtra.add(btn);
+        }
+
+        this.add(panelExtra, BorderLayout.SOUTH);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+
+        String comando = e.getActionCommand();
+
+        // Números
+        if("0123456789.".contains(comando)){
+            texto += comando;
+            pantalla.setText(texto);
+        }
+
+        // Limpiar
+        else if(comando.equals("C")){
+            texto = "";
+            pantalla.setText("0");
+        }
+
+        // Operadores
+        else if("+-*/".contains(comando)){
+            num1 = Double.parseDouble(texto);
+            operador = comando;
+            texto = "";
+        }
+
+        // Igual
+        else if(comando.equals("=")){
+            num2 = Double.parseDouble(texto);
+
+            switch(operador){
+                case "+": resultado = num1 + num2; break;
+                case "-": resultado = num1 - num2; break;
+                case "*": resultado = num1 * num2; break;
+                case "/": resultado = num1 / num2; break;
+            }
+
+            pantalla.setText(String.valueOf(resultado));
+            texto = "";
+        }
+    }
+
+    public static void main(String[] args) {
+        new Ventana();
+    }
+}
