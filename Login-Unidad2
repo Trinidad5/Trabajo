@@ -1,1 +1,103 @@
+package eee;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Login extends JFrame {
+
+    private JTextField txtUser;
+    private JPasswordField txtPass;
+    private JButton btnLogin, btnSignUp;
+
+    public Login() {
+
+        setTitle("User Login");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(null);
+
+        JPanel fondo = new JPanel();
+        fondo.setBounds(0, 0, 600, 400);
+        fondo.setLayout(null);
+        fondo.setBackground(new Color(200, 200, 200));
+        setContentPane(fondo);
+
+        JLabel titulo = new JLabel("Iniciar Secion");
+        titulo.setBounds(200, 40, 300, 40);
+        titulo.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 28));
+        titulo.setForeground(Color.BLACK);
+        fondo.add(titulo);
+
+        JLabel lblUser = new JLabel("Ingrese su nombre");
+        lblUser.setBounds(190, 95, 220, 20);
+        lblUser.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        lblUser.setForeground(Color.BLACK);
+        fondo.add(lblUser);
+
+        ImageIcon iconoPersonaOriginal = new ImageIcon("imagen/persona.png");
+        Image imagenPersona = iconoPersonaOriginal.getImage();
+        Image imagenPersonaEscalada = imagenPersona.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+        ImageIcon iconoPersona = new ImageIcon(imagenPersonaEscalada);
+
+        JLabel iconUser = new JLabel(iconoPersona);
+        iconUser.setBounds(150, 120, 32, 32);
+        fondo.add(iconUser);
+
+        txtUser = new JTextField();
+        txtUser.setBounds(190, 120, 220, 32);
+        fondo.add(txtUser);
+
+        JLabel lblPass = new JLabel("Ingrese su contraseña");
+        lblPass.setBounds(190, 150, 220, 20);
+        lblPass.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        lblPass.setForeground(Color.BLACK);
+        fondo.add(lblPass);
+
+        ImageIcon iconoLockOriginal = new ImageIcon("imagen/lock.png");
+        Image imagenLock = iconoLockOriginal.getImage();
+        Image imagenLockEscalada = imagenLock.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+        ImageIcon iconoLock = new ImageIcon(imagenLockEscalada);
+
+        JLabel iconPass = new JLabel(iconoLock);
+        iconPass.setBounds(150, 170, 32, 32);
+        fondo.add(iconPass);
+
+        txtPass = new JPasswordField();
+        txtPass.setBounds(190, 170, 220, 32);
+        fondo.add(txtPass);
+
+        btnLogin = new JButton("Login");
+        btnLogin.setBounds(230, 230, 140, 40);
+        btnLogin.setFocusPainted(false);
+        btnLogin.setBackground(new Color(160, 160, 160));
+        btnLogin.setForeground(Color.BLACK);
+        btnLogin.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
+        btnLogin.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        fondo.add(btnLogin);
+
+        btnLogin.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                btnLogin.setBackground(new Color(130, 130, 130));
+            }
+
+            public void mouseExited(MouseEvent e) {
+                btnLogin.setBackground(new Color(160, 160, 160));
+            }
+        });
+
+        btnSignUp = new JButton("Sign Up");
+        btnSignUp.setBounds(230, 290, 140, 35);
+        btnSignUp.setFocusPainted(false);
+        btnSignUp.setBackground(new Color(180, 180, 180));
+        btnSignUp.setForeground(Color.BLACK);
+        fondo.add(btnSignUp);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Login();
+    }
+}
