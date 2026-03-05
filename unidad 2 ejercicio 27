@@ -1,1 +1,179 @@
+package oke; // e
 
+import javax.swing.*;   // Herramientas
+import java.awt.*;      // Herramientas color
+
+public class Interfaz extends JFrame {   // clase jframe (ventana)
+
+    public Interfaz() {   // constructor
+
+        setTitle("Calculando el Interes");
+        // Titulo barra ventana
+
+        setSize(600,650);
+        // Tamaño ventana
+
+        setLayout(new BorderLayout());
+        // layout principal de la ventana
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // cerrar programa al cerrar ventana
+
+
+        // TITULO SUPERIOR
+
+        JLabel titulo = new JLabel("Interés");
+        // texto superior
+
+        titulo.setFont(new Font("Serif",Font.BOLD | Font.ITALIC,32));
+        // fuente del texto
+
+        titulo.setForeground(Color.RED);
+        // color rojo
+
+        titulo.setBorder(BorderFactory.createEmptyBorder(10,20,10,10));
+        // espacio alrededor
+
+        add(titulo,BorderLayout.NORTH);
+        // agregar arriba
+
+
+        // PANEL VERDE 
+
+        JPanel panelCalculo = new JPanel();
+        // panel verde principal
+
+        panelCalculo.setBackground(Color.decode("#8BE28B"));
+        // color verde
+
+        panelCalculo.setBorder(BorderFactory.createTitledBorder("Calcular Interes"));
+        // borde con titulo
+
+        panelCalculo.setLayout(new GridLayout(4,2,10,10));
+        // tabla 4 filas 2 columnas
+
+        add(panelCalculo,BorderLayout.CENTER);
+        // agregar al centro
+
+
+        // CAPITAL
+
+        JLabel lblCapital = new JLabel("Capital:");
+        // etiqueta capital
+
+        JTextField txtCapital = new JTextField("1500");
+        // campo capital
+
+        panelCalculo.add(lblCapital);
+        // agregar etiqueta
+
+        panelCalculo.add(txtCapital);
+        // agregar campo
+
+
+        // TIEMPO
+
+        JLabel lblTiempo = new JLabel("Tiempo:");
+        // etiqueta tiempo
+
+        JTextField txtTiempo = new JTextField("2");
+        // campo tiempo
+
+        panelCalculo.add(lblTiempo);
+        // agregar etiqueta
+
+        panelCalculo.add(txtTiempo);
+        // agregar campo
+
+
+        // TASA
+
+        JLabel lblTasa = new JLabel("Tasa Interes:");
+        // etiqueta tasa
+
+        JTextField txtTasa = new JTextField("0.1");
+        // campo tasa
+
+        panelCalculo.add(lblTasa);
+        // agregar etiqueta
+
+        panelCalculo.add(txtTasa);
+        // agregar campo
+
+
+        // BOTONES
+
+        JButton btnCalcular = new JButton("Calcular");
+        // boton calcular
+
+        JButton btnCancelar = new JButton("Cancelar");
+        // boton cancelar
+
+        panelCalculo.add(btnCalcular);
+        // agregar boton
+
+        panelCalculo.add(btnCancelar);
+        // agregar boton
+
+
+
+        // PANEL RESULTADOS (ROJO)
+
+        JPanel panelResultados = new JPanel();
+        // panel resultados
+
+        panelResultados.setBackground(Color.decode("#E88989"));
+        // color rojo
+
+        panelResultados.setLayout(new GridLayout(2,2,10,10));
+        // tabla 2 filas 2 columnas
+
+        panelResultados.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+        // espacio interior
+
+        add(panelResultados,BorderLayout.SOUTH);
+        // agregar abajo
+
+
+        // INTERES RESULTADO
+
+        JLabel lblInteres = new JLabel("Interes:");
+        // etiqueta interes
+
+        JTextField txtInteres = new JTextField("315.00000000000002");
+        // resultado interes
+
+        panelResultados.add(lblInteres);
+        // agregar etiqueta
+
+        panelResultados.add(txtInteres);
+        // agregar campo
+
+
+        // MONTO RESULTADO
+
+        JLabel lblMonto = new JLabel("Monto:");
+        // etiqueta monto
+
+        JTextField txtMonto = new JTextField("1815.0000000000002");
+        // resultado monto
+
+        panelResultados.add(lblMonto);
+        // agregar etiqueta
+
+        panelResultados.add(txtMonto);
+        // agregar campo
+
+    }
+
+    public static void main(String[] args) {
+
+        Interfaz ventana = new Interfaz();
+        // crear ventana
+
+        ventana.setVisible(true);
+        // mostrar ventana
+
+    }
+
+}
