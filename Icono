@@ -1,1 +1,29 @@
+import javax.swing.*;
+import java.awt.*;
 
+public class Icono extends JFrame {
+
+    public Icono() {
+
+        setTitle("Calculadora imagen");
+        setSize(400,300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        // icono de la ventana
+        ImageIcon icono = new ImageIcon("imagen/Calculator.png");
+        setIconImage(icono.getImage());
+
+        // logo dentro de la ventana
+        JLabel logo = new JLabel(new ImageIcon("imagen/Java logo.png"));
+        logo.setHorizontalAlignment(JLabel.CENTER);
+
+        add(logo);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Icono();
+    }
+}
